@@ -1,0 +1,21 @@
+## Basic syntax-highlighting for PostgreSQL
+## config files (ie: postgresql.conf, pg_hba.conf, etc.)
+syntax "pgsql_config" "postgresql\.conf$" "pg_(hba|ident|ctl)\.conf$"
+
+
+
+## parameters ##
+color brightgreen "^(data_directory|hba_file|ident_file|external_pid_file|listen_addresses|port|max_connections|superuser_reserved_connections|unix_socket_(directories|group|permissions)|bonjour|bonjour_name|authentication_timeout|ssl|ssl_(ciphers|prefer_server_ciphers|ecdh_curve|renegotiation_limit|(cert|key|ca|crl)_file)|password_encryption|db_user_namespace|krb_server_keyfile|krb_caseins_users|tcp_keepalives_(idle|interval|count)|shared_buffers|huge_pages|temp_buffers|max_prepared_transactions|work_mem|maintenance_work_mem|autovacuum_work_mem|max_stack_depth|dynamic_shared_memory_type|temp_file_limit|max_files_per_process|shared_preload_libraries)"
+
+### write ahead log ###
+color brightgreen "^(wal_level|fsync|synchronous_commit|wal_sync_method|full_page_writes|wal_log_hints|wal_buffers|wal_writer_delay|commit_delay|commit_siblings|checkpoint_(segments|timeout|completion_target|warning)|archive_(mode|command|timeout))"
+
+### autovacuum parameters ###
+color brightgreen "^(autovacuum|log_autovacuum_min_duration|autovacuum_(max_workers|naptime|vacuum_threshold|analyze_threshold|vacuum_scale_factor|analyze_scale_factor|freeze_max_age|multixact_freeze_max_age|vacuum_cost_(delay|limit)))"
+
+
+## quoted strings ##
+color brightyellow ""(\\.|[^"])*"" "'(\\.|[^'])*'"
+
+## comments ##
+color cyan "(^|[[:space:]])#.*$"
